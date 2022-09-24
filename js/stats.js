@@ -33,7 +33,7 @@ function showStats(index) {
     const solve = stats.times[index];
     const list = [];
 
-    list.push(`<strong>Solve #</strong>: ${index}`);
+    list.push(`<strong>Solve #</strong>: ${index + 1}`);
     list.push(`<strong>Time to Solve</strong>: ${getTime(solve[0])}`);
     list.push(`<strong>Scramble</strong>: ${solve[1]}`);
     list.push(`<strong>+2</strong>: ${solve[2] ? 'Yes' : 'No'}`);
