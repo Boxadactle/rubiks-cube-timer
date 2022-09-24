@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/content.css">
+
+    <script defer async src="js/scramble.js"></script>
+    <script defer asynnc src="js/timer.js"></script>
+    <script defer async src="js/stats.js"></script>
+    <script defer async src="js/alert.js"></script>
+    <script defer async src="js/main.js"></script>
+    <title>rubiks cube timer no way</title>
+</head>
+<body>
+    
+    <div style="padding: 40px;" class="timer box">
+
+        <div class="time">
+            <strong><span class="counter">00 : 00</span></strong>
+        </div>
+
+        <p class="scramble"></p>
+
+        <button class="start">Click here or press space to start</button>
+
+    </div>
+
+    <div style="display: none;" class="alert">
+        <h2 class="header"></h1>
+        <div class="body"></div>
+        <button class="close">Ok</button>
+    </div>
+    
+    <div style="padding: 10px 30px;" class="times box">
+        <h3>Timer</h3>
+        <div class="timehaver"></div><br>
+    </div>
+
+    <div style="padding: 10px 30px;" class="stats box">
+        <h3>Stats</h3>
+
+        <p>Cubes solved: <span class="cubes">--</span></p>
+        <p>Average: <span class="average">--</span></p>
+        <p>Fastest Time: <span class="fastest">--</span></p>
+        <p>Slowest Time: <span class="slowest">--</span></p>
+
+        <button onclick="showAlert('Export Session', '<textarea readonly cols=\'72\' rows=\'10\'>' + exportSession() + '</textarea>')">Export Session</button>
+        <button onclick="showInput('Import Session', 'Put session save here', loadSession)">Import Session</button>
+        <button onclick="downloadFile('session.txt', exportSession())">Download Session</button>
+    </div>
+
+</body>
+</html>
