@@ -54,3 +54,25 @@ button {
     font-family: 'Noto Sans';
     cursor: pointer;
 }
+
+.phone-alert {
+    background: rgb(38, 38, 38);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.phone-content {
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 20px;
+}

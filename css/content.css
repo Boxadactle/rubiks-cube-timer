@@ -33,11 +33,6 @@
     outline: none;
 }
 
-.times {
-    width: calc(50% - 107px);
-    display: inline-block;
-}
-
 .stats {
     width: calc(50% - 107px);
     display: inline-block;
@@ -54,35 +49,4 @@
 
 .stats button:hover {
     background: rgb(46, 54, 162);
-}
-
-.timehaver {
-    padding: 5px 20px;
-    background: rgb(50, 50, 50);
-    overflow-y: auto;
-    height: 200px;
-}
-
-.timer .t {
-    padding-right: 25%;
-}
-
-.timer .number {
-    padding-right: 20px;
-    font-weight: 700;
-}
-
-.modifier {
-    border: none;
-    padding: 1px 10px;
-    background: transparent;
-    color: white;
-}
-
-.modifier:hover {
-    color: rgb(184, 184, 184);
-}
-
-.modifier.active {
-    color: rgb(154, 152, 152);
 }

@@ -5,6 +5,14 @@ scramble.innerHTML = generateScramble(25);
 
 let timerGoing = false;
 
+const phoneAlert = document.querySelector('.phone-alert');
+
+// check if theyre on mobile haha
+setInterval(function() {
+    if (window.innerWidth < window.innerHeight) phoneAlert.style.display = 'block';
+    else phoneAlert.style.display = 'none';
+}, 100);
+
 start.onclick = function () {
     start.blur();
 

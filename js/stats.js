@@ -33,13 +33,14 @@ function showStats(index) {
     const solve = stats.times[index];
     const list = [];
 
-    list.push(`<strong>Solve #</strong>: ${index}`);
+    list.push(`<strong>Solve #</strong>: ${index + 1}`);
     list.push(`<strong>Time to Solve</strong>: ${getTime(solve[0])}`);
     list.push(`<strong>Scramble</strong>: ${solve[1]}`);
     list.push(`<strong>+2</strong>: ${solve[2] ? 'Yes' : 'No'}`);
     list.push(`<strong>DNF</strong>: ${solve[3] ? 'Yes' : 'No'}`);
+    list.push(`<button onclick="removeTime(${index})">Remove Time</button>`);
 
-    showAlert(`Stats for Solve ${index}`, list.join('\n'));
+    showAlert(`Stats for Solve ${index + 1}`, list.join('\n'));
 }
 
 function addTime(time, scramble) {
@@ -56,6 +57,18 @@ function dnf(index) {
     stats.times[index][3] = !stats.times[index][3];
     stats.times[index][2] = false;
     refreshStats();
+}
+
+async function removeTime(index) {
+    stats.times.splice(index, 1);
+    hideAlert();
+    refreshStats();
+}
+
+function downloadStats() {
+    const d = new Date();
+    const filename = `session ${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()} ${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}`;
+    downloadFile(filename + '.txt', exportSession())
 }
 
 function refreshStats() {
@@ -85,7 +98,7 @@ function refreshStats() {
         if (worstTime < calculatedTime) worstTime = calculatedTime;
 
         html.push(`
-        <div class="timer">
+        <div class="solve">
             <span class="number">#${i + 1}</span>
             <span class="t">${getTime(time[0])}</span>
             <button class="modifier${time[2] ? ' active' : ''}" onclick="plustwo(${i})">+2</button>

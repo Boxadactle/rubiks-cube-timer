@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/times.css">
 
     <script defer async src="js/scramble.js"></script>
     <script defer asynnc src="js/timer.js"></script>
@@ -23,11 +24,19 @@
     <title>rubik's cube timer no way</title>
 </head>
 <body>
+
+    <div style="display: none;" class="phone-alert">
+        <div class="phone-content">
+            <img width="300" src="rotate_phone.png">
+            <h2>Please rotate your phone!</h2>
+            <p>This app does not work in portrait! Please rotate your phone.</p>
+        </div> 
+    </div>
     
     <div style="padding: 40px;" class="timer box">
 
         <div class="time">
-            <strong><span class="counter">00 : 00</span></strong>
+            <strong><span class="counter">00.00</span></strong>
         </div>
 
         <p class="scramble"></p>
@@ -57,7 +66,7 @@
 
         <button onclick="showAlert('Export Session', '<textarea readonly cols=\'72\' rows=\'10\'>' + exportSession() + '</textarea>')">Export Session</button>
         <button onclick="showInput('Import Session', 'Put session save here', loadSession)">Import Session</button>
-        <button onclick="downloadFile('session.txt', exportSession())">Download Session</button>
+        <button onclick="downloadStats()">Download Session</button>
     </div>
 
 </body>
