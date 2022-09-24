@@ -37,5 +37,5 @@ function getTime(time) {
     let formattedSS = ss.toString().padStart(2, "0");
     let formattedMS = ms.toString().padStart(2, "0");
   
-    return `${mm >= 1 ? formattedMM + ' : ' : ''}${formattedSS}.${formattedMS}`;
+    return `${mm >= 1 ? formattedMM + ':' : ''}${formattedSS}.${formattedMS}`;
 }
