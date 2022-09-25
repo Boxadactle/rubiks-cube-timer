@@ -13,6 +13,9 @@ setInterval(function() {
     else phoneAlert.style.display = 'none';
 }, 100);
 
+// so that we can get the session saved in the cookie
+loadSession(getCachedSave());
+
 start.onclick = function () {
     start.blur();
 
@@ -27,6 +30,11 @@ start.onclick = function () {
 
 document.onkeydown = function(e) {
     let shouldStart = true;
+
+    if (e.code == 'Escape') {
+        hideAlert();
+        document.activeElement.blur();
+    };
 
     document.querySelectorAll('textarea').forEach(e => {
         shouldStart = !(document.activeElement == e);

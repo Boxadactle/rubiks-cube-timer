@@ -64,9 +64,9 @@
         <p>Fastest Time: <span class="fastest">--</span></p>
         <p>Slowest Time: <span class="slowest">--</span></p>
 
-        <button onclick="showAlert('Export Session', '<textarea readonly cols=\'72\' rows=\'10\'>' + exportSession() + '</textarea>')">Export Session</button>
-        <button onclick="showInput('Import Session', 'Put session save here', loadSession)">Import Session</button>
-        <button onclick="downloadStats()">Download Session</button>
+        <button onclick="showAlert('Export Session', '<textarea readonly cols=\'72\' rows=\'10\'>' + exportSession() + '</textarea>' + '<br><button onclick=\'downloadStats()\'>Download as File</button>')">Export</button>
+        <button onclick="showInput('Import Session', '<button onclick=\'showUploadSessionAlert()\'>Upload Session File</button>', loadSession)">Import</button>
+        <button onclick="showPrompt('Confirm Reset', 'Are you sure you want to reset the session?', (doIt) => { if (doIt) loadSession('MDsgVzEwPQ==') })">Reset</button>
     </div>
 
 </body>

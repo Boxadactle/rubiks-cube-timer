@@ -9,12 +9,26 @@ const fastest = document.querySelector('.fastest');
 const slowest = document.querySelector('.slowest');
 const timerhaver = document.querySelector('.timehaver');
 
+function getCachedSave() {
+    const cname = "session=";
+    const decoded = decodeURIComponent(document.cookie);
+    const a = decoded.split(';');
+    let save = "";
+
+    a.forEach(cookie => {
+        if (cookie.startsWith(cname)) save = cookie.split(cname)[1];
+    })
+
+    return save;
+}
+
 function exportSession() {
     return btoa(`${stats.solved}; ${btoa(JSON.stringify(stats.times))}`);
 }
 
 // i dont care if you fuck up your save
 function loadSession(string) {
+    if (string.length == 0) return;
     try {
         const parsed = atob(string);
         const solves = parsed.split(';')[0];
@@ -71,6 +85,9 @@ function downloadStats() {
     downloadFile(filename + '.txt', exportSession())
 }
 
+const showUploadSessionAlert = () => showFileAlert('Upload Session File', 'Load a downloaded session file', (file) => {loadSession(file.target.result)}, '.txt');
+
+
 function refreshStats() {
     let html = [];
 
@@ -110,9 +127,11 @@ function refreshStats() {
 
     solved.innerHTML = cubes;
     average.innerHTML = cubes == 0 ? '--' : getTime(allTimes / cubes);
-    fastest.innerHTML = getTime(bestTime);
-    slowest.innerHTML = getTime(worstTime);
+    fastest.innerHTML = cubes == 0 ? '--' : getTime(bestTime);
+    slowest.innerHTML = cubes == 0 ? '--' : getTime(worstTime);
 
     timerhaver.innerHTML = html.join('\n');
+
+    document.cookie = `session=${exportSession()};`;
 
 }
